@@ -51,3 +51,35 @@ for i in range(n):
 
 print("Step", i+1, ": t =", round(t, 2), ", y =", round(y, 4))
 ```
+
+
+1. c. You are working for "COMPANY" that makes floats for ABC commodes. The floating ball has a specific gravity of 0.6 and has a radius of 5.5cm. You are asked to find the depth to which the ball is submerged when floating in water. The equation that gives the depth x to which the ball is submerged under water is given by X^4 - 0.165*X^2 + 3.993x10^(-2) = 0 Use the false-position method of finding roots of equations to find the depth x to which the ball is submerged under water. Conduct three iterations to estimate the root of the above equation. Find the absolute relative approximate error at the end of each iteration, and the number of significant digits at least correct at the end of third iteration.
+
+```
+
+# Function definition
+def f(x):
+    return x**4 - 0.165*x**2 + 3.993e-2
+
+# False Position Method
+def falsi(a, b, tol):
+    while abs(b - a) >= tol:
+        c = b - (f(b) * (a - b)) / (f(a) - f(b))
+        if f(c) == 0:
+            break
+        elif f(a) * f(c) < 0:
+            b = c
+        else:
+            a = c
+    print("Approximate root is:", round(c, 6))
+
+# Fixed values
+a = 0
+b = 1
+tol = 0.001
+
+# Call the method
+falsi(a, b, tol)
+
+
+```
