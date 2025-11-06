@@ -28,3 +28,26 @@ tol = 0.001
 
 bisection(a, b, tol)
 ```
+
+
+1. b. For the initial value problem (IVP) y'-y = -(1/2)(e^(t/2)) * sin(5t) + 5(e^(t/2)) + cos(5t), y(0) = 0 Use Euler's Method to find the approximation to the solution at t=1, t=2, t=3, t=4, and t=5. Use h=0.1, h=0.5, h=0.01, h=0.05, h=0.001, and h=0.005 for the approximations. Compare them to the exact values of the solution at these points. Show also the result in tabular format and plot the solution data using graphically.
+
+```
+import math
+
+def f(t, y):
+    return y + (-0.5 * math.exp(t/2) * math.sin(5*t) + 5 * math.exp(t/2) + math.cos(5*t))
+
+# Initial values
+t = 0       # initial t
+y = 0       # initial y
+h = 0.1     # step size
+n = 10      # number of steps
+
+# Euler's Method Loop
+for i in range(n):
+    y = y + h * f(t, y)
+    t = t + h
+
+print("Step", i+1, ": t =", round(t, 2), ", y =", round(y, 4))
+```
