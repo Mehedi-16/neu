@@ -83,3 +83,34 @@ falsi(a, b, tol)
 
 
 ```
+
+
+<img width="1752" height="410" alt="image" src="https://github.com/user-attachments/assets/6fa5233d-60a3-4334-a561-e38ee760436f" />
+
+```
+import math
+
+def f(t):
+    return 200 * math.log(140000 / (140000 - 2100 * t)) - 9.8 * t
+
+# Input values
+a = 8       # lower limit
+b = 30      # upper limit
+n = 6       # number of subintervals (must be multiple of 3)
+
+h = (b - a) / n  # step size
+
+# Simpson's 3/8 Rule formula
+sum = f(a) + f(b)
+
+for i in range(1, n):
+    x = a + i * h
+    if i % 3 == 0:
+        sum += 2 * f(x)
+    else:
+        sum += 3 * f(x)
+
+area = (3 * h / 8) * sum
+print("Approximate vertical distance =", round(area, 4), "meters")
+
+```
